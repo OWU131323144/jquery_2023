@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<style>
+  li:hover{
+    background-color: #fbc55e;
+
+  }
+  h1{
+    text-align: center;
+    color: #fbc55e;
+    padding: 20px;
+  }
+  body{
+    font-family: 'Arial', sans-serif;
+    background-color: #fefbe7;
+    text-align: center;
+    padding: 20px;
+  }
+
+  main{
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: auto;
+    width: 300px;
+  }
+
+  #judgment{
+    font-size: 50px;
+    margin-top: 20px;
+    color: #f8a733;
+  }
+
+  #pc_hands{
+    font-weight: bold;
+    font-size: 30px;
+    color: #fbc55e;
+  }
+
+  footer{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+  }
+</style>
+<body>
+
+<header>
+  <h1>じゃんけん</h1>
+</header>
+
+<main>
+  <ul>
+    <li id="gu_btn">ぐー</li>
+    <li id="choki_btn">ちょき</li>
+    <li id="par_btn">ぱー</li>
+  </ul>
+  <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+  <div id="judgment">せーの！</div>
+  <img id="image" src="j" alt="コンピュータの手" style="display:none; margin-top: 20px;">
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+
+// 初期設定
+const n = 3;
+const draw = "あいこ！";
+const win = "きみのかち！";
+const lose = "きみのまけ！";
+const guu = "ぐー";
+const choki = "ちょき";
+const par = "ぱー";
+
+$("#image").attr("src", "nyaa.jpg").show();
+
+// グーをクリックした場合
+$("#gu_btn").on("click",function(){
+  $("#image").attr("src", "nyaa.jpg").hide();
+  const r = Math.ceil(Math.random()*n);
+  if(r===1){
+    $("#judgment").html(draw);
+    $("#pc_hands").html(guu);
+    $("#image").attr("src", "guu.jpg").fadeIn(2000);
+  }else if(r===2){
+    $("#judgment").html(win);
+    $("#pc_hands").html(choki);
+    $("#image").attr("src", "choki.jpg").fadeIn(2000);
+  }else if(r===3){
+    $("#judgment").html(lose);
+    $("#pc_hands").html(par);
+    $("#image").attr("src", "par.jpg").fadeIn(2000);
+  }
+})
+
+// チョキをクリックした場合
+$("#choki_btn").on("click",function(){
+  $("#image").attr("src", "nyaa.jpg").hide();
+  const r = Math.ceil(Math.random()*n);
+  if(r===1){
+    $("#judgment").html(draw);
+    $("#pc_hands").html(choki);
+    $("#image").attr("src", "choki.jpg").fadeIn(2000);
+  }else if(r===2){
+    $("#judgment").html(win);
+    $("#pc_hands").html(par);
+    $("#image").attr("src", "par.jpg").fadeIn(2000);
+  }else if(r===3){
+    $("#judgment").html(lose);
+    $("#pc_hands").html(guu);
+    $("#image").attr("src", "guu.jpg").fadeIn(2000);
+  }
+})
+
+// パーをクリックした場合
+$("#par_btn").on("click",function(){
+  $("#image").attr("src", "nyaa.jpg").hide();
+  const r = Math.ceil(Math.random()*n);
+  if(r===1){
+    $("#judgment").html(draw);
+    $("#pc_hands").html(par);
+    $("#image").attr("src", "par.jpg").fadeIn(2000);
+  }else if(r===2){
+    $("#judgment").html(win);
+    $("#pc_hands").html(guu);
+    $("#image").attr("src", "guu.jpg").fadeIn(2000);
+  }else if(r===3){
+    $("#judgment").html(lose);
+    $("#pc_hands").html(choki);
+    $("#image").attr("src", "choki.jpg").fadeIn(2000);
+  }
+})    
+    
+</script>
+</body>
+</html>
